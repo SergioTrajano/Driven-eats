@@ -1,4 +1,4 @@
-function fecharPedido() {
+function   habilitarPedido() {
     const prato = document.querySelector(".prato").querySelector(".selecionado");
     const bebida = document.querySelector(".bebida").querySelector(".selecionado");
     const sobremessa =document.querySelector(".sobremessa").querySelector(".selecionado");
@@ -10,35 +10,65 @@ function fecharPedido() {
 
 function selecionaPrato(elemento) {
     const apagar = document.querySelector(".prato").querySelector(".selecionado");
-    if (apagar != null) {
+    const desabilitado = document.querySelector(".desabilitado");
+    const habilitado = document.querySelector(".habilitado");
+    if (apagar == elemento) {
         apagar.classList.remove("selecionado");
         apagar.querySelector(".icone").classList.add("escondido");
+        desabilitado.classList.remove("escondido");
+        habilitado.classList.add("escondido");
     }
-    elemento.classList.add("selecionado");
-    elemento.querySelector(".icone").classList.remove("escondido");
-    fecharPedido();
+    else {
+        if (apagar != null) {
+            apagar.classList.remove("selecionado");
+            apagar.querySelector(".icone").classList.add("escondido");
+        }
+        elemento.classList.add("selecionado");
+        elemento.querySelector(".icone").classList.remove("escondido");
+        habilitarPedido();  
+    }
 }
 
 function selecionaBebida(elemento) {
     const apagar = document.querySelector(".bebida").querySelector(".selecionado");
-    if (apagar != null) {
+    const desabilitado = document.querySelector(".desabilitado");
+    const habilitado = document.querySelector(".habilitado");
+    if (apagar == elemento) {
         apagar.classList.remove("selecionado");
         apagar.querySelector(".icone").classList.add("escondido");
+        desabilitado.classList.remove("escondido");
+        habilitado.classList.add("escondido");
     }
-    elemento.classList.add("selecionado");
-    elemento.querySelector(".icone").classList.remove("escondido");
-    fecharPedido();
+    else {
+        if (apagar != null) {
+            apagar.classList.remove("selecionado");
+            apagar.querySelector(".icone").classList.add("escondido");
+        }
+        elemento.classList.add("selecionado");
+        elemento.querySelector(".icone").classList.remove("escondido");
+        habilitarPedido();
+    }
 }
 
 function selecionaSobremessa(elemento) {
     const apagar = document.querySelector(".sobremessa").querySelector(".selecionado");
-    if (apagar != null) {
+    const desabilitado = document.querySelector(".desabilitado");
+    const habilitado = document.querySelector(".habilitado");
+    if (apagar == elemento) {
         apagar.classList.remove("selecionado");
         apagar.querySelector(".icone").classList.add("escondido");
+        desabilitado.classList.remove("escondido");
+        habilitado.classList.add("escondido");
     }
-    elemento.classList.add("selecionado");
-    elemento.querySelector(".icone").classList.remove("escondido");
-    fecharPedido();
+    else {
+        if (apagar != null) {
+            apagar.classList.remove("selecionado");
+            apagar.querySelector(".icone").classList.add("escondido");
+        }
+        elemento.classList.add("selecionado");
+        elemento.querySelector(".icone").classList.remove("escondido");
+        habilitarPedido();
+    }
 }
 
 function enviar() {
