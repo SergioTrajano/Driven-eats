@@ -84,9 +84,15 @@ function enviar() {
     const nomeSobremessa = sobremessa.querySelector("h4").innerHTML;
     const valorSobremessa = Number(sobremessa.querySelector("span").innerHTML);
 
+    const nome = prompt("Nome: ");
+    const endereco = prompt("Endereço: ");
+
     window.open("https://wa.me/5581993340979?text=" + encodeURIComponent(`Olá, gostaria de fazer o pedido:
 - Prato: ${nomePrato}
 - Bebida: ${nomeBebida}
 - Sobremesa: ${nomeSobremessa}
-Total: R$ ${(valorPrato + valorBebida + valorSobremessa).toFixed(2)}`));
+Total: R$ ${(valorPrato + valorBebida + valorSobremessa).toFixed(2)}
+
+Nome: ${nome}
+Endereço: ${endereco}`));
 }
