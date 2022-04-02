@@ -1,7 +1,44 @@
+function pratoSelecionado() {
+    return prato = document.querySelector(".prato").querySelector(".selecionado");
+}
+
+function bebidaSelecionada() {
+    return document.querySelector(".bebida").querySelector(".selecionado");
+}
+
+function sobremessaSelecionada() {
+    return document.querySelector(".sobremessa").querySelector(".selecionado");
+}
+
+function botaoDesabilitado() {
+    return document.querySelector(".desabilitado");
+}
+
+function botaoHabilitado() {
+    return document.querySelector(".habilitado");document.querySelector(".habilitado");
+}
+
+function apagaElemento(apagar, desabilitado, habilitado) {
+    apagar.classList.remove("selecionado");
+    apagar.querySelector(".icone").classList.add("escondido");
+    desabilitado.classList.remove("escondido");
+    habilitado.classList.add("escondido");
+}
+
+function removeSelecionado(apagar) {
+    apagar.classList.remove("selecionado");
+    apagar.querySelector(".icone").classList.add("escondido");
+}
+
+function adcionaSelecionado(elemento) {
+    elemento.classList.add("selecionado");
+    elemento.querySelector(".icone").classList.remove("escondido");
+}
+
 function   habilitarPedido() {
-    const prato = document.querySelector(".prato").querySelector(".selecionado");
-    const bebida = document.querySelector(".bebida").querySelector(".selecionado");
-    const sobremessa =document.querySelector(".sobremessa").querySelector(".selecionado");
+    const prato = pratoSelecionado();
+    const bebida = bebidaSelecionada();
+    const sobremessa = sobremessaSelecionada();
     if (prato != null && bebida != null && sobremessa != null) {
         document.querySelector(".desabilitado").classList.add("escondido");
         document.querySelector(".habilitado").classList.remove("escondido");
@@ -9,78 +46,63 @@ function   habilitarPedido() {
 }
 
 function selecionaPrato(elemento) {
-    const apagar = document.querySelector(".prato").querySelector(".selecionado");
-    const desabilitado = document.querySelector(".desabilitado");
-    const habilitado = document.querySelector(".habilitado");
+    const apagar = pratoSelecionado();
+    const desabilitado = botaoDesabilitado();
+    const habilitado = botaoHabilitado();
     if (apagar == elemento) {
-        apagar.classList.remove("selecionado");
-        apagar.querySelector(".icone").classList.add("escondido");
-        desabilitado.classList.remove("escondido");
-        habilitado.classList.add("escondido");
+        apagaElemento(apagar, desabilitado, habilitado);
     }
     else {
         if (apagar != null) {
-            apagar.classList.remove("selecionado");
-            apagar.querySelector(".icone").classList.add("escondido");
+            removeSelecionado(apagar);
         }
-        elemento.classList.add("selecionado");
-        elemento.querySelector(".icone").classList.remove("escondido");
+        adcionaSelecionado(elemento);
         habilitarPedido();  
     }
 }
 
 function selecionaBebida(elemento) {
-    const apagar = document.querySelector(".bebida").querySelector(".selecionado");
-    const desabilitado = document.querySelector(".desabilitado");
-    const habilitado = document.querySelector(".habilitado");
+    const apagar = bebidaSelecionada();
+    const desabilitado = botaoDesabilitado();
+    const habilitado = botaoHabilitado();
     if (apagar == elemento) {
-        apagar.classList.remove("selecionado");
-        apagar.querySelector(".icone").classList.add("escondido");
-        desabilitado.classList.remove("escondido");
-        habilitado.classList.add("escondido");
+        apagaElemento(apagar, desabilitado, habilitado);
     }
     else {
         if (apagar != null) {
-            apagar.classList.remove("selecionado");
-            apagar.querySelector(".icone").classList.add("escondido");
+            removeSelecionado(apagar);
         }
-        elemento.classList.add("selecionado");
-        elemento.querySelector(".icone").classList.remove("escondido");
+        adcionaSelecionado(elemento);
         habilitarPedido();
     }
 }
 
 function selecionaSobremessa(elemento) {
-    const apagar = document.querySelector(".sobremessa").querySelector(".selecionado");
-    const desabilitado = document.querySelector(".desabilitado");
-    const habilitado = document.querySelector(".habilitado");
+    const apagar = sobremessaSelecionada();
+    const desabilitado = botaoDesabilitado();
+    const habilitado = botaoHabilitado();
     if (apagar == elemento) {
-        apagar.classList.remove("selecionado");
-        apagar.querySelector(".icone").classList.add("escondido");
-        desabilitado.classList.remove("escondido");
-        habilitado.classList.add("escondido");
+        apagaElemento(apagar, desabilitado, habilitado);
     }
     else {
         if (apagar != null) {
-            apagar.classList.remove("selecionado");
-            apagar.querySelector(".icone").classList.add("escondido");
+            removeSelecionado(apagar);
         }
-        elemento.classList.add("selecionado");
-        elemento.querySelector(".icone").classList.remove("escondido");
+        adcionaSelecionado(elemento);
         habilitarPedido();
     }
 }
 
 function enviar() {
-    const prato = document.querySelector(".prato").querySelector(".selecionado");
+    const prato = pratoSelecionado();
     const nomePrato = prato.querySelector("h4").innerHTML;
     const valorPrato = Number(prato.querySelector("span").innerHTML);
 
-    const bebida = document.querySelector(".bebida").querySelector(".selecionado");
+    const bebida = bebidaSelecionada();
     const nomeBebida = bebida.querySelector("h4").innerHTML;
     const valorBebida = Number(bebida.querySelector("span").innerHTML);
 
-    const sobremessa =document.querySelector(".sobremessa").querySelector(".selecionado");
+    const sobremessa = sobremessaSelecionada();
     const nomeSobremessa = sobremessa.querySelector("h4").innerHTML;
     const valorSobremessa = Number(sobremessa.querySelector("span").innerHTML);
 
