@@ -1,6 +1,14 @@
+function fecharPedido() {
+    const prato = document.querySelector(".prato").querySelector(".selecionado");
+    const bebida = document.querySelector(".bebida").querySelector(".selecionado");
+    const sobremessa =document.querySelector(".sobremessa").querySelector(".selecionado");
+    if (prato != null && bebida != null && sobremessa != null) {
+        document.querySelector(".desabilitado").classList.add("escondido");
+        document.querySelector(".habilitado").classList.remove("escondido");
+    }
+}
 
-
-function selecionaComida(elemento) {
+function selecionaPrato(elemento) {
     const apagar = document.querySelector(".prato").querySelector(".selecionado");
     if (apagar != null) {
         apagar.classList.remove("selecionado");
@@ -8,6 +16,7 @@ function selecionaComida(elemento) {
     }
     elemento.classList.add("selecionado");
     elemento.querySelector(".icone").classList.remove("escondido");
+    fecharPedido();
 }
 
 function selecionaBebida(elemento) {
@@ -18,6 +27,7 @@ function selecionaBebida(elemento) {
     }
     elemento.classList.add("selecionado");
     elemento.querySelector(".icone").classList.remove("escondido");
+    fecharPedido();
 }
 
 function selecionaSobremessa(elemento) {
@@ -28,4 +38,5 @@ function selecionaSobremessa(elemento) {
     }
     elemento.classList.add("selecionado");
     elemento.querySelector(".icone").classList.remove("escondido");
+    fecharPedido();
 }

@@ -17,14 +17,18 @@
             <p>Sua comida em 6 minutos</p>
         </div>
         <div class="fundo">
-            <button><span>Selecione os 3 itens
-                para fechar o pedido</span></button>
+            <button class="desabilitado">
+                Selecione os 3 itens para fechar o pedido
+            </button>
+            <button class="habilitado escondido">
+                Fechar pedido
+            </button>
         </div>
         <div class="cardapio">
             <div class="prato">
                 <h3>Primeiro, seu prato</h3>
                 <div>
-                    <div class="comida" onclick="selecionaComida(this)">
+                    <div class="comida" onclick="selecionaPrato(this)">
                         <img src="imgs/frango_yin_yang 1.png" >
                             <h4>Frango Yin Yang</h4>
                             <p>Um pouco de batata, um pouco de salada</p>
@@ -33,7 +37,7 @@
                                 <ion-icon name="checkmark-circle"></ion-icon>
                             </div>
                     </div>
-                    <div class="comida" onclick="selecionaComida(this)">
+                    <div class="comida" onclick="selecionaPrato(this)">
                         <img src="imgs/escondidinho.jpg" >
                             <h4>Escondidinho de carne</h4>
                             <p>Um pouco de batata</p>
@@ -42,7 +46,7 @@
                                 <ion-icon name="checkmark-circle"></ion-icon>
                             </div>
                     </div>
-                    <div class="comida" onclick="selecionaComida(this)">
+                    <div class="comida" onclick="selecionaPrato(this)">
                         <img src="imgs/lasanha.jpg" >
                             <h4>Lasanha</h4>
                             <p>Com muito molho</p>
@@ -51,7 +55,7 @@
                                 <ion-icon name="checkmark-circle"></ion-icon>
                             </div>
                     </div>
-                    <div class="comida" onclick="selecionaComida(this)">
+                    <div class="comida" onclick="selecionaPrato(this)">
                         <img src="imgs/arrumadinho.jpg" >
                             <h4>Arrumadinho</h4>
                             <p>Um pouco de batata, um pouco de salada</p>
@@ -60,7 +64,7 @@
                                 <ion-icon name="checkmark-circle"></ion-icon>
                             </div>
                     </div>
-                    <div class="comida" onclick="selecionaComida(this)">
+                    <div class="comida" onclick="selecionaPrato(this)">
                         <img src="imgs/sushi.jpg" >
                             <h4>Sushi</h4>
                             <p>Peixe cru</p>
@@ -173,6 +177,7 @@
             </div>
         </div>
         <script src="scripts.js"></script>
-        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
     </body>
 </html>
