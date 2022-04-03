@@ -1,21 +1,9 @@
-function pratoSelecionado() {
-    return prato = document.querySelector(".prato").querySelector(".selecionado");
+function itemSelecionado(tipo) {
+    return prato = document.querySelector(`.${tipo}`).querySelector(".selecionado");
 }
 
-function bebidaSelecionada() {
-    return document.querySelector(".bebida").querySelector(".selecionado");
-}
-
-function sobremessaSelecionada() {
-    return document.querySelector(".sobremessa").querySelector(".selecionado");
-}
-
-function botaoDesabilitado() {
-    return document.querySelector(".desabilitado");
-}
-
-function botaoHabilitado() {
-    return document.querySelector(".habilitado");document.querySelector(".habilitado");
+function botaoSelecionado(tipo) { 
+    return document.querySelector(`.${tipo}`);
 }
 
 function apagaElemento(apagar, desabilitado, habilitado) {
@@ -35,20 +23,36 @@ function adcionaSelecionado(elemento) {
     elemento.querySelector(".icone").classList.remove("escondido");
 }
 
-function   habilitarPedido() {
-    const prato = pratoSelecionado();
-    const bebida = bebidaSelecionada();
-    const sobremessa = sobremessaSelecionada();
+function habilitarPedido() {
+    const prato = itemSelecionado("prato");
+    const bebida = itemSelecionado("bebida");
+    const sobremessa = itemSelecionado("sobremessa");
     if (prato != null && bebida != null && sobremessa != null) {
         document.querySelector(".desabilitado").classList.add("escondido");
         document.querySelector(".habilitado").classList.remove("escondido");
     }
 }
 
+function preencheItem(div) {
+    return document.querySelector(`.pedido ${div} h4`);
+}
+
+function preenchePreco(div) {
+    return document.querySelector(`.pedido ${div} span`);
+}
+
+function nomeItem(elemento) {
+    return elemento.querySelector("h4").innerHTML;
+}
+
+function valorItem(elemento) {
+    return Number(elemento.querySelector("span").innerHTML).toFixed(2);
+}
+
 function selecionaPrato(elemento) {
-    const apagar = pratoSelecionado();
-    const desabilitado = botaoDesabilitado();
-    const habilitado = botaoHabilitado();
+    const apagar = itemSelecionado("prato");
+    const desabilitado = botaoSelecionado("desabilitado");
+    const habilitado = botaoSelecionado("habilitado");
     if (apagar == elemento) {
         apagaElemento(apagar, desabilitado, habilitado);
     }
@@ -62,9 +66,9 @@ function selecionaPrato(elemento) {
 }
 
 function selecionaBebida(elemento) {
-    const apagar = bebidaSelecionada();
-    const desabilitado = botaoDesabilitado();
-    const habilitado = botaoHabilitado();
+    const apagar = itemSelecionado("bebida");
+    const desabilitado = botaoSelecionado("desabilitado");
+    const habilitado = botaoSelecionado("habilitado");
     if (apagar == elemento) {
         apagaElemento(apagar, desabilitado, habilitado);
     }
@@ -78,9 +82,9 @@ function selecionaBebida(elemento) {
 }
 
 function selecionaSobremessa(elemento) {
-    const apagar = sobremessaSelecionada();
-    const desabilitado = botaoDesabilitado();
-    const habilitado = botaoHabilitado();
+    const apagar = itemSelecionado("sobremessa");
+    const desabilitado = botaoSelecionado("desabilitado");
+    const habilitado = botaoSelecionado("habilitado");
     if (apagar == elemento) {
         apagaElemento(apagar, desabilitado, habilitado);
     }
@@ -94,59 +98,63 @@ function selecionaSobremessa(elemento) {
 }
 
 function confirmarPedido() {
-    const revisao = document.querySelector(".confirmar");
+    const revisao = document.querySelector(".enviar");
     revisao.classList.remove("escondido");
     
-    const prato = pratoSelecionado();
-    const bebida = bebidaSelecionada();
-    const sobremessa = sobremessaSelecionada();
+    const prato = itemSelecionado("prato");
+    const bebida = itemSelecionado("bebida");
+    const sobremessa = itemSelecionado("sobremessa");
 
-    const nomePrato = document.querySelector(".pedido div:nth-child(1) h4");
-    const precoPrato = document.querySelector(".pedido div:nth-child(1) span");
-    nomePrato.innerHTML = prato.querySelector("h4").innerHTML
-    precoPrato.innerHTML = Number(prato.querySelector("span").innerHTML).toFixed(2);
+    const nomePrato = preencheItem("div:nth-child(1)");
+    const precoPrato = preenchePreco("div:nth-child(1)");
+    nomePrato.innerHTML = nomeItem(prato);
+    precoPrato.innerHTML = valorItem(prato);
 
-    const nomeBebida = document.querySelector(".pedido div:nth-child(2) h4");
-    const precoBebida = document.querySelector(".pedido div:nth-child(2) span");
-    nomeBebida.innerHTML = bebida.querySelector("h4").innerHTML
-    precoBebida.innerHTML = Number(bebida.querySelector("span").innerHTML).toFixed(2);
+    const nomeBebida = preencheItem("div:nth-child(2)");
+    const precoBebida = preenchePreco("div:nth-child(2)");
+    nomeBebida.innerHTML = nomeItem(bebida);
+    precoBebida.innerHTML = valorItem(bebida);
 
-    const nomeSobremessa = document.querySelector(".pedido div:nth-child(3) h4");
-    const precoSobremessa = document.querySelector(".pedido div:nth-child(3) span");
-    nomeSobremessa.innerHTML = sobremessa.querySelector("h4").innerHTML
-    precoSobremessa.innerHTML = Number(sobremessa.querySelector("span").innerHTML).toFixed(2);
+    const nomeSobremessa = preencheItem("div:nth-child(3)");
+    const precoSobremessa = preenchePreco("div:nth-child(3)");
+    nomeSobremessa.innerHTML = nomeItem(sobremessa);
+    precoSobremessa.innerHTML = valorItem(sobremessa);
 
-    const precoTotal = document.querySelector(".pedido div:nth-child(4) span");
-    precoTotal.innerHTML = `R$ ${(Number(precoPrato.innerHTML) + Number(precoBebida.innerHTML) + Number(precoSobremessa.innerHTML)).toFixed(2)}`;
+    const precoTotal = preenchePreco("div:nth-child(4)");
+    precoTotal.innerHTML = `R$ ${Number(Number(precoPrato.innerHTML) + Number(precoBebida.innerHTML) + Number(precoSobremessa.innerHTML)).toFixed(2)}`;
 }
 
 function enviarPedido() {
-    const prato = pratoSelecionado();
-    const nomePrato = prato.querySelector("h4").innerHTML;
-    const valorPrato = Number(prato.querySelector("span").innerHTML);
+    const prato = itemSelecionado("prato");
+    const nomePrato = nomeItem(prato);
+    const valorPrato = valorItem(prato);
 
-    const bebida = bebidaSelecionada();
-    const nomeBebida = bebida.querySelector("h4").innerHTML;
-    const valorBebida = Number(bebida.querySelector("span").innerHTML);
+    const bebida = itemSelecionado("bebida");
+    const nomeBebida = nomeItem(bebida);
+    const valorBebida = valorItem(bebida);
 
-    const sobremessa = sobremessaSelecionada();
-    const nomeSobremessa = sobremessa.querySelector("h4").innerHTML;
+    const sobremessa = itemSelecionado("sobremessa");
+    const nomeSobremessa = nomeItem(sobremessa);
     const valorSobremessa = Number(sobremessa.querySelector("span").innerHTML);
 
-    const nome = prompt("Nome: ");
-    const endereco = prompt("Endereço: ");
-
-    window.open("https://wa.me/5581993340979?text=" + encodeURIComponent(`Olá, gostaria de fazer o pedido:
+    const nomeCliente = prompt("Nome: ");
+    let enderecoCliente;
+    if (nomeCliente != null) {
+        enderecoCliente = prompt("Endereço: ");
+    }
+    if (nomeCliente != null && enderecoCliente != null) {
+        window.open("https://wa.me/5581993340979?text=" + encodeURIComponent(`Olá, gostaria de fazer o pedido:
 - Prato: ${nomePrato}
 - Bebida: ${nomeBebida}
 - Sobremesa: ${nomeSobremessa}
-Total: R$ ${(valorPrato + valorBebida + valorSobremessa).toFixed(2)}
+Total: R$ ${Number(Number(valorPrato) + Number(valorBebida) + Number(valorSobremessa)).toFixed(2)}
 
-Nome: ${nome}
-Endereço: ${endereco}`));
+Nome: ${nomeCliente}
+Endereço: ${enderecoCliente}`));
+    }
 }
 
 function cancelarPedido() {
-    const revisao = document.querySelector(".confirmar");
+    const revisao = document.querySelector(".enviar");
     revisao.classList.add("escondido");
 }
