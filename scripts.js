@@ -93,7 +93,34 @@ function selecionaSobremessa(elemento) {
     }
 }
 
-function enviar() {
+function confirmarPedido() {
+    const revisao = document.querySelector(".confirmar");
+    revisao.classList.remove("escondido");
+    
+    const prato = pratoSelecionado();
+    const bebida = bebidaSelecionada();
+    const sobremessa = sobremessaSelecionada();
+
+    const nomePrato = document.querySelector(".pedido div:nth-child(1) h4");
+    const precoPrato = document.querySelector(".pedido div:nth-child(1) span");
+    nomePrato.innerHTML = prato.querySelector("h4").innerHTML
+    precoPrato.innerHTML = Number(prato.querySelector("span").innerHTML).toFixed(2);
+
+    const nomeBebida = document.querySelector(".pedido div:nth-child(2) h4");
+    const precoBebida = document.querySelector(".pedido div:nth-child(2) span");
+    nomeBebida.innerHTML = bebida.querySelector("h4").innerHTML
+    precoBebida.innerHTML = Number(bebida.querySelector("span").innerHTML).toFixed(2);
+
+    const nomeSobremessa = document.querySelector(".pedido div:nth-child(3) h4");
+    const precoSobremessa = document.querySelector(".pedido div:nth-child(3) span");
+    nomeSobremessa.innerHTML = sobremessa.querySelector("h4").innerHTML
+    precoSobremessa.innerHTML = Number(sobremessa.querySelector("span").innerHTML).toFixed(2);
+
+    const precoTotal = document.querySelector(".pedido div:nth-child(4) span");
+    precoTotal.innerHTML = `R$ ${(Number(precoPrato.innerHTML) + Number(precoBebida.innerHTML) + Number(precoSobremessa.innerHTML)).toFixed(2)}`;
+}
+
+function enviarPedido() {
     const prato = pratoSelecionado();
     const nomePrato = prato.querySelector("h4").innerHTML;
     const valorPrato = Number(prato.querySelector("span").innerHTML);
@@ -117,4 +144,9 @@ Total: R$ ${(valorPrato + valorBebida + valorSobremessa).toFixed(2)}
 
 Nome: ${nome}
 Endereço: ${endereco}`));
+}
+
+function cancelarPedido() {
+    const revisao = document.querySelector(".confirmar");
+    revisao.classList.add("escondido");
 }
