@@ -51,11 +51,11 @@ body {
     font-size: 20px;
     line-height: 24px;
     border-radius: 5em / 5em;
+    color:#FFFFFF;
 }
 
 .fundo .habilitado {
     font-weight: 700;
-    color:#FFFFFF;
     background-color: #32B72F;
 }
 
